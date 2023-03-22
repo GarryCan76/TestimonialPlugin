@@ -12,7 +12,11 @@ License: GPL-2.0+
 // Voeg html toe onderin de pagina.
 add_action('get_footer','mybox');
 function mybox(){
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">';
     echo '<div class="infobox">Hier komt wat informatie</div>';
+    echo '<div style="font-family: Delicious Handrawn, cursive;" class="infobox">'.get_option('footer_text').'</div>';
 }
 // Voeg styling toe in de <head>.
 add_action('get_header','mystyles');

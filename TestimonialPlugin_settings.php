@@ -20,7 +20,7 @@ if(isset($_POST['wphw_submit'])){
        <table class="form-table">
          <tr>
            <td scope="row">Footer tekst</td>
-           <td><input type="text" name="footertextname" value="<?php echo get_option('footer_text');?>"></td>
+           <td><input type="text" name="footertextname" maxlength="255" value="<?php echo get_option('footer_text');?>"></td>
          </tr>
          <tr>
            <td scope="row">&nbsp;</td>
