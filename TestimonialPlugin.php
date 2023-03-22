@@ -8,3 +8,8 @@ Author: Krijn and Garon
 Author URI: gluwebURL
 License: GPL-2.0+
  */
+
+add_action('get_footer','mybox');
+function mybox(){
+    echo '<div style="background-color: aqua; width: 100px; height: 100px"></div>';
+}
