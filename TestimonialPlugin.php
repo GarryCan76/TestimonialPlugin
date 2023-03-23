@@ -15,22 +15,68 @@ function mybox(){
     echo '<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">';
-    echo '<div class="infobox">Hier komt wat informatie</div>';
-    echo '<div style="font-family: Delicious Handrawn, cursive;" class="infobox">'.get_option('footer_text').'</div>';
+    echo '<div class="TestimonialHeader">Testimonials from clients</div>';
+    echo '<div class="TestimonialBox">
+<div style="font-family: Delicious Handrawn, cursive;" id="first" class="infobox"><p>'.get_option('first_text').'</p> <p style="font-size: larger"><b>'.get_option('first_writer').'</b></p></div>
+<div style="font-family: Delicious Handrawn, cursive;" id="second" class="infobox"><p>'.get_option('second_text').'</p> <p style="font-size: larger"><b>'.get_option('second_writer').'</b></p></div>
+<div style="font-family: Delicious Handrawn, cursive;" id="third" class="infobox"><p>'.get_option('third_text').'</p> <p style="font-size: larger"><b>'.get_option('third_writer').'</b></p></div>
+</div>
+<script>
+let cycle = 2;
+document.getElementById("first").style.display = "flex";
+setInterval(()=>{
+    let first = document.getElementById("first");
+    let second = document.getElementById("second");
+    let third = document.getElementById("third");
+    if (cycle === 1){
+    first.style.display = "flex";
+    second.style.display = "none";
+    third.style.display = "none";
+    } else if (cycle === 2){
+        first.style.display = "none";
+    second.style.display = "flex";
+    third.style.display = "none";
+    } else if (cycle === 3){
+        first.style.display = "none";
+    second.style.display = "none";
+    third.style.display = "flex";
+    cycle = 1;
+    }
+    cycle += 1;
+}, 5000)
+</script>';
 }
 // Voeg styling toe in de <head>.
 add_action('get_header','mystyles');
 function mystyles(){
     echo '<style>
+.TestimonialHeader{
+width: 100%;
+text-align: center;
+}
+.TestimonialBox{
+width: 100%;
+height: 30%;
+display: flex;
+flex-direction: row;
+align-content: center;
+justify-content: space-evenly;
+}
+
   .infobox{
-     background-color:black;
-   width:100%;
-   height:54px;
-   color:white;
-   display:flex;
+     background-color:white;
+     font-size: 1.2em;
+   min-width:10%;
+   max-width:30%;
+   border-radius: 10%;
+   color:black;
+   display: none;
+   flex-direction: column;
    justify-content:center;
-   align-items:center;
- }
+   align-items:center;}
+   .infobox > *{
+   margin: 5%;
+   }
  </style>';
 }
 
